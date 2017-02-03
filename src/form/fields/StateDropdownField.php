@@ -130,6 +130,8 @@ class StateDropdownField extends DropdownField
             $this->setStates($source);
         }
 
+        $this->setDisabledItems();
+
         parent::__construct($name, ($title === null) ? $name : $title, $source, $value, $form);
     }
 
@@ -213,6 +215,21 @@ class StateDropdownField extends DropdownField
     public function getSource()
     {
         return $this->getStates();
+    }
+
+    /**
+     * Prepend disabled array with separator value
+     *
+     * @param array $disabled
+     * @return DropdownField
+     */
+    public function setDisabledItems($disabled = [])
+    {
+        if (!in_array($this->config()->get('option_separator_value'), $disabled)) {
+            array_unshift($disabled, $this->config()->get('option_separator_value'));
+        }
+
+        return parent::setDisabledItems($disabled);
     }
 
 }
