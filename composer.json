@@ -1,0 +1,41 @@
+{
+  "name": "dynamic/state-dropdown-field",
+  "description": "A simple state dropdown field for SilverStripe forms",
+  "authors": [
+    {
+      "name": "Dynamic",
+      "email": "dev@dynamicagency.com"
+    }
+  ],
+  "keywords": [
+    "silverstripe",
+    "dropdown",
+    "state",
+    "form",
+    "field"
+  ],
+  "type": "silverstripe-module",
+  "license": "BSD-3-Clause",
+  "require": {
+    "silverstripe/framework": "^3.2"
+  },
+  "require-dev": {
+    "phpunit/PHPUnit": "^3.7"
+  },
+  "config": {
+    "process-timeout": 600
+  },
+  "autoload": {
+    "psr-4": {
+      "Dynamic\\StateDropdownField\\": "src/"
+    }
+  },
+  "extra": {
+    "installer-name": "state-dropdown-field",
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
