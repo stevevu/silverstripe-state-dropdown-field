@@ -116,4 +116,27 @@ class StateDropdownTest extends SapphireTest
         $this->markTestIncomplete('Write test to confirm proper error triggers when non-array passed as source');
     }
 
+    /**
+     * Test that disabled items are set properly as well as merged with the default separator if present
+     */
+    public function testSetDisabledItems()
+    {
+        $expectedDisabled = [
+            '-',
+            'WI',
+        ];
+
+        $disabledKeys = [
+            'WI',
+        ];
+
+        $dropdown = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField', 'Test Field');
+        $dropdown->setDisabledItems($disabledKeys);
+
+        $this->assertEquals($expectedDisabled, $dropdown->getDisabledItems());
+
+        $dropdown2 = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField2', 'Test Field 2');
+        $this->assertEquals(['-'], $dropdown2->getDisabledItems());
+    }
+
 }
