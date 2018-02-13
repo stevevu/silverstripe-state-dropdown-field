@@ -1,3 +1,6 @@
+inherit: true
+
+#Copied from https://www.adayinthelifeof.nl/2013/11/20/external-code-coverage-with-travis-scrutinizer/
 tools:
     external_code_coverage:
       timeout: 600
@@ -23,3 +26,12 @@ checks:
     php:
         code_rating: true
         duplication: true
+
+build:
+  nodes:
+    analysis:
+      tests:
+        override: [php-scrutinizer-run]
+
+filter:
+    paths: [tests/*,src/*]

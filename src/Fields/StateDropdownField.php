@@ -2,7 +2,7 @@
 
 namespace Dynamic\StateDropdownField\Fields;
 
-use \DropdownField;
+use SilverStripe\Forms\DropdownField;
 
 /**
  * A simple extension to dropdown field, pre-configured to list states.
@@ -143,7 +143,10 @@ class StateDropdownField extends DropdownField
     public function setStates($states = [], $includeProvinces = true)
     {
         if ($states !== (array)$states) {
-            trigger_error("The \$source passed isn't an array. When passing a source it must be an array.", E_USER_ERROR);
+            trigger_error(
+                "The \$source passed isn't an array. When passing a source it must be an array.",
+                E_USER_ERROR
+            );
         }
 
         $globalDefaults = empty($states);
@@ -182,9 +185,14 @@ class StateDropdownField extends DropdownField
     protected function getDefaultProvincesList()
     {
         $provinces = ((bool)$this->config()->get('include_state_province_separator'))
-            ? [(string)$this->config()->get('option_separator_value') => (string)$this->config()->get('option_separator')]
+            ? [
+                (string)$this->config()->get('option_separator_value') => (string)$this->config()->get(
+                    'option_separator'
+                ),
+            ]
             : [];
         $provinces = array_merge($provinces, $this->config()->get('default_provinces'));
+
         return $provinces;
     }
 
@@ -196,6 +204,7 @@ class StateDropdownField extends DropdownField
         if (!$this->states || empty($this->states)) {
             $this->setStates();
         }
+
         return $this->states;
     }
 
@@ -206,6 +215,7 @@ class StateDropdownField extends DropdownField
     public function setSource($source = [])
     {
         $this->setStates($source);
+
         return $this;
     }
 
@@ -231,5 +241,4 @@ class StateDropdownField extends DropdownField
 
         return parent::setDisabledItems($disabled);
     }
-
 }
