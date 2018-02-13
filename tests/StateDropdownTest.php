@@ -1,5 +1,10 @@
 <?php
 
+namespace Dynamic\StateDropdownField\Tests;
+
+use Dynamic\StateDropdownField\Fields\StateDropdownField;
+use SilverStripe\Dev\SapphireTest;
+
 /**
  * Class StateDropdownTest
  */
@@ -76,7 +81,7 @@ class StateDropdownTest extends SapphireTest
             'SK' => 'Saskatchewan',
         ];
 
-        $dropdown = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField', 'Test Field');
+        $dropdown = StateDropdownField::create('TestField', 'Test Field');
         $this->assertEquals($default, $dropdown->getSource());
     }
 
@@ -90,7 +95,7 @@ class StateDropdownTest extends SapphireTest
             'MN' => 'Minnesota',
         ];
 
-        $dropdown = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField', 'Test Field', $states);
+        $dropdown = StateDropdownField::create('TestField', 'Test Field', $states);
         $this->assertEquals($states, $dropdown->getSource());
     }
 
@@ -106,7 +111,7 @@ class StateDropdownTest extends SapphireTest
             'MN' => 'MN',
         ];
 
-        $dropdown = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField', 'Test Field', $statesSource);
+        $dropdown = StateDropdownField::create('TestField', 'Test Field', $statesSource);
         $this->assertEquals($statesExpected, $dropdown->getSource());
 
     }
@@ -130,12 +135,12 @@ class StateDropdownTest extends SapphireTest
             'WI',
         ];
 
-        $dropdown = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField', 'Test Field');
+        $dropdown = StateDropdownField::create('TestField', 'Test Field');
         $dropdown->setDisabledItems($disabledKeys);
 
         $this->assertEquals($expectedDisabled, $dropdown->getDisabledItems());
 
-        $dropdown2 = Dynamic\StateDropdownField\Fields\StateDropdownField::create('TestField2', 'Test Field 2');
+        $dropdown2 = StateDropdownField::create('TestField2', 'Test Field 2');
         $this->assertEquals(['-'], $dropdown2->getDisabledItems());
     }
 

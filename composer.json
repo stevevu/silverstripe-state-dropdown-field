@@ -29,7 +29,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Dynamic\\StateDropdownField\\": "src/"
+      "Dynamic\\StateDropdownField\\": "src/",
+      "Dynamic\\StateDropdownField\\Tests\\": "tests/"
     }
   },
   "extra": {
