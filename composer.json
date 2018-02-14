@@ -33,7 +33,8 @@
   "extra": {
     "installer-name": "state-dropdown-field",
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "1.0": "1.0.x-dev",
+      "dev-master": "2.0.x-dev"
     }
   },
   "minimum-stability": "dev",
